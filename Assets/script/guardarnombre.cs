@@ -5,17 +5,21 @@ using UnityEngine.UI;
 
 public class guardarnombre : MonoBehaviour
 {
-    public InputField Nombre;
+    public InputField inputNombre;
+    public Text inputNomgreG;
     public Text labelNombre;
-    string nombrere;
+    string nombre;
 
-    public string clicksaveButton(){
-        PlayerPrefs.SetString("name", Nombre.text);
+   
+
+    public string getName(){
+        PlayerPrefs.SetString("name", inputNombre.text);
         Debug.Log("Bienvendio "+PlayerPrefs.GetString("name"));
-        nombrere=Nombre.text;
-        return nombrere;
+        nombre=inputNombre.text;
+        labelNombre.text=nombre;
+        return nombre;
     }
     public void setNombre(string userN){
-        labelNombre.text=userN;
+       inputNomgreG.text=userN;
     }
 }

@@ -7,15 +7,18 @@ using System.IO;
 public class saveSystem : MonoBehaviour
 {
     guardarnombre userscr;
+    InitialData problemascr;
     string savePath;
     saveData data;
 
     public void Awake()  {
         userscr=FindObjectOfType<guardarnombre>();
+        problemascr=FindObjectOfType<InitialData>();
         savePath=Application.persistentDataPath+"/save.dat";
         if(!File.Exists(savePath)){
             saveData newData= new saveData();
             newData.username="jugador";
+            newData.problem="1/2";
             saveGame(newData);
         }
         data=LoadGame();
@@ -33,17 +36,24 @@ public class saveSystem : MonoBehaviour
         return datatoReturn;
     }
     public void saveGameButton(){
-        string userN=userscr.clicksaveButton();
+        string userN=userscr.getName();
+        string problemN=problemascr.getProblemas();
         data.username=userN;
+        data.problem=problemN;
         saveGame(data);
+    
     }
     public void loadGameButton(){
         string userN=data.username;
+        string problemN=data.problem;
+        problemascr.setProblemas(problemN);
         userscr.setNombre(userN);
+    
     }
 
 
     public class saveData{
             public string username;
+            public string problem;
     }
 }
