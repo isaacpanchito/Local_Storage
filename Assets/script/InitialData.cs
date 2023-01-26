@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class InitialData : MonoBehaviour
 {
-    string[] problemas;
-    string  problema;
-    public Text problemlabel;
-     public Text problemlabelG;
+    string[] problemas; //Arreglo que contendra las respuestas de la pirmera pregunta
+    string  problema; //Variable que obtendra un elemento del arreglo
+    public Text problemlabel; //Texto donde se mostrara el elemento
+     public Text problemlabelG; //texto que carga el valor guardado localmente
 
 
     
 
     void Awake(){
-        problemas= new string[20];
-        problemas[0]="1/2";
+        problemas= new string[20];//arreglo
+        problemas[0]="1/2"; //indice y valores...
         problemas[1]="1/3";
         problemas[2]="2/8";
         problemas[3]="2/5";
@@ -39,16 +39,16 @@ public class InitialData : MonoBehaviour
 
     }
 
+    /* metodo que asigna aleatoriamente un elemento del arreglo y muestra el valor al usuario */
     public void randomProblemas(){
-
-        problema=problemas[Random.Range(0, 19)];
-        problemlabel.text=problema;
+        problema=problemas[Random.Range(0, 19)];//asigna valor
+        problemlabel.text=problema;//asigna valor al label para que se muestre
     }
-        
+        //Este metodo devuelve el valor de la variable problema
     public string getProblemas(){
         return problema;
     }
-
+    //Este metodo recibe un valor igual al de porblema y se lo asigna a un label para mostrarlo
     public void setProblemas(string problemaN){
         problemlabelG.text=problemaN;
     }
