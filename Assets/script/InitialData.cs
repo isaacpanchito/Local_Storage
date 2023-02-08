@@ -8,7 +8,7 @@ public class InitialData : MonoBehaviour
     string[] problemas; //Arreglo que contendra las respuestas de la pirmera pregunta
     string  problema; //Variable que obtendra un elemento del arreglo
     public Text problemlabel; //Texto donde se mostrara el elemento
-     public Text problemlabelG; //texto que carga el valor guardado localmente
+    public Text problemlabelG; //texto que carga el valor guardado localmente
 
 
     
