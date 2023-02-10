@@ -46,21 +46,33 @@ public class questionSelector : MonoBehaviour
         problemasTry[1]="";
         problemasTry[2]="";
         problemasTry[3]="";
+        
+        
+        bool repetido=false;
+        int indice=0;
         int m=Random.Range(0,4);
-        for(int i=0;i<problemasTry.Length;i++){
+        while(indice<problemasTry.Length){
+            repetido=false;
             n= Random.Range(0,objectsToInstantiate.Length);
-            problemasTry[i]=problemas[n];
-            Debug.Log(i);
-            GameObject buttonFrac= Instantiate(ButtonstoInstantiate,  new Vector2(i*180,100), pos.transform.rotation) as GameObject;
-            buttonFrac.name = ("button"+i.ToString());
-            GameObject.Find("button"+i.ToString()).GetComponentInChildren<Text>().text = problemasTry[i];
-            buttonFrac.transform.parent=pos.transform;
-            if(i==m){
-                GameObject imagenFrac = Instantiate(objectsToInstantiate[n], pos.position, pos.transform.rotation) as GameObject;
-                imagenFrac.transform.parent=pos.transform;
-            }
+            for(int j=0; j<problemasTry.Length ;j++){
+                    if(problemasTry[j]==problemas[n]){
+                        repetido=true;
+                    }
+                }
+                if(!repetido){
+                    problemasTry[indice]=problemas[n];
+                    GameObject buttonFrac= Instantiate(ButtonstoInstantiate,  new Vector2(indice*180,100), pos.transform.rotation) as GameObject;
+                    buttonFrac.name = ("button"+indice.ToString());
+                    GameObject.Find("button"+indice.ToString()).GetComponentInChildren<Text>().text = problemasTry[indice];
+                    buttonFrac.transform.parent=pos.transform;
+                    if(indice==m){
+                        GameObject imagenFrac = Instantiate(objectsToInstantiate[n], pos.position, pos.transform.rotation) as GameObject;
+                        imagenFrac.transform.parent=pos.transform;
+                    }
+                    indice++;
+                }   
         }
-        //instantiateObject();
+        
     }
 
     // Update is called once per frame
